@@ -67,7 +67,7 @@ namespace HotelRoomBookingDAL.Repository
             };
 
 
-            _dbContext.AddRange(companies);
+            _dbContext.Company.AddRange(companies);
             return _dbContext.SaveChanges() > 1;
         }
 
