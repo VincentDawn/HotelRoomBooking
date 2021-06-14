@@ -1,11 +1,12 @@
 ﻿using HotelRoomCodeFirstDb.EnumEntities;
 using System.ComponentModel.DataAnnotations;
+using static HotelRoomCodeFirstDb.Converters.EnumFunctions;
 
 namespace HotelRoomCodeFirstDb.Entities
 {
-    public class RoomType
+    public class RoomType : IEnumModel<RoomType, RoomTypeEnum>
     {
-        public RoomTypeEnum RoomTypeId { get; set; }
+        public RoomTypeEnum Id { get; set; }
 
         [Required]
         [MaxLength(255)]
