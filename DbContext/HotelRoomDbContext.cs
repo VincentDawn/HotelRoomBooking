@@ -2,13 +2,12 @@
 using HotelRoomCodeFirstDb.Entities;
 using HotelRoomCodeFirstDb.EnumEntities;
 using Microsoft.EntityFrameworkCore;
-using System.ComponentModel;
 
 namespace HotelRoomCodeFirstDb
 {
     public class HotelRoomDbContext : DbContext
     {
-        public HotelRoomDbContext(DbContextOptions<HotelRoomDbContext> options) : base (options)
+        public HotelRoomDbContext(DbContextOptions<HotelRoomDbContext> options) : base(options)
         {
 
         }
