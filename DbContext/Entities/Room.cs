@@ -1,4 +1,5 @@
 ﻿using HotelRoomCodeFirstDb.EnumEntities;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace HotelRoomCodeFirstDb.Entities
@@ -22,6 +23,8 @@ namespace HotelRoomCodeFirstDb.Entities
         [Required]
         public RoomTypeEnum RoomType { get; set; }
 
+
         public virtual Hotel Hotel { get; set; }
+        public virtual ICollection<Booking> Bookings { get; set; }
     }
 }

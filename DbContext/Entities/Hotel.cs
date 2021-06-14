@@ -16,11 +16,13 @@ namespace HotelRoomCodeFirstDb.Entities
         [MaxLength(255)]
         public string Name { get; set; }
 
+
         public virtual ICollection<Room> Rooms { get; set; }
 
         // Alternatively you can use ForeignKey("PropertyName") like this but it's also implicit. Added it in for fun
-        [ForeignKey("Company")]
+        [ForeignKey("CompanyId")]
         public virtual Company Company { get; set; }
 
+        public virtual ICollection<Booking> Booking { get; set; }
     }
 }
