@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelRoomBooking", "HotelRoomBooking\HotelRoomBooking.csproj", "{169828B9-CE29-40C3-9354-37BA914ED6BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbContext", "DbContext\DbContext.csproj", "{993E0737-BBC3-4AB8-89FD-60D1FD1AE3EB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelRoomCodeFirstDb", "DbContext\HotelRoomCodeFirstDb.csproj", "{993E0737-BBC3-4AB8-89FD-60D1FD1AE3EB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelRoomBookingBLL", "HotelRoomBookingBLL\HotelRoomBookingBLL.csproj", "{80AFC948-4DEB-4631-AE31-AA990C158C81}"
 EndProject
