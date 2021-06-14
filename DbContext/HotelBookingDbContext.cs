@@ -2,7 +2,6 @@
 using HotelRoomCodeFirstDb.Entities;
 using HotelRoomCodeFirstDb.EnumEntities;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace HotelRoomCodeFirstDb
 {
@@ -16,8 +15,8 @@ namespace HotelRoomCodeFirstDb
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Entity type 'BookingToRoom' has composite primary key defined with data annotations. To set composite primary key, use fluent API.
-            modelBuilder.Entity<BookingToRoom>()
-                .HasKey(c => new { c.BookingId, c.RoomId });
+            //modelBuilder.Entity<BookingToRoom>()
+            //    .HasKey(c => new { c.BookingId, c.RoomId });
 
             // I could do the seeding here or add it in an extension method, but it appears the spec says we need setup and teardown methods after startup
 
@@ -29,13 +28,8 @@ namespace HotelRoomCodeFirstDb
             modelBuilder.Entity<Booking>().HasIndex(x => x.BookingReference);
         }
 
-        public object firstordefault(Booking entity, int bookingId)
-        {
-            throw new NotImplementedException();
-        }
-
         public DbSet<Booking> Booking { get; set; }
-        public DbSet<BookingToRoom> BookingToRoom { get; set; }
+        //public DbSet<BookingToRoom> BookingToRoom { get; set; }
         public DbSet<Company> Company { get; set; }
         public DbSet<Hotel> Hotel { get; set; }
         public DbSet<Room> Room { get; set; }

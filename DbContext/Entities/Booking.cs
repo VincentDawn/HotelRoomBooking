@@ -17,9 +17,8 @@ namespace HotelRoomCodeFirstDb.Entities
         public Guid BookingReference { get; set; } // spec says "BookingNumber" but I want to use a GUID and I don't want to append "Number"
 
         public int RoomId { get; set; }
-        public int HotelId { get; set; }
 
 
-        public Room Room { get; set; }
+        public virtual Room Room { get; set; }
     }
 }
