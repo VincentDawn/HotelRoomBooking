@@ -23,6 +23,6 @@ namespace HotelRoomCodeFirstDb.Entities
         [ForeignKey("CompanyId")]
         public virtual Company Company { get; set; }
 
-        public virtual ICollection<Booking> Booking { get; set; }
+        public virtual ICollection<Booking> Bookings { get; set; }
     }
 }

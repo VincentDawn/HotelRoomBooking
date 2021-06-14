@@ -2,12 +2,13 @@
 using HotelRoomCodeFirstDb.Entities;
 using HotelRoomCodeFirstDb.EnumEntities;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace HotelRoomCodeFirstDb
 {
-    public class HotelRoomDbContext : DbContext
+    public class HotelBookingDbContext : DbContext
     {
-        public HotelRoomDbContext(DbContextOptions<HotelRoomDbContext> options) : base(options)
+        public HotelBookingDbContext(DbContextOptions<HotelBookingDbContext> options) : base(options)
         {
 
         }
@@ -26,6 +27,11 @@ namespace HotelRoomCodeFirstDb
             // Alternate key
             modelBuilder.Entity<Booking>().HasAlternateKey(x => x.BookingReference);
             modelBuilder.Entity<Booking>().HasIndex(x => x.BookingReference);
+        }
+
+        public object firstordefault(Booking entity, int bookingId)
+        {
+            throw new NotImplementedException();
         }
 
         public DbSet<Booking> Booking { get; set; }
