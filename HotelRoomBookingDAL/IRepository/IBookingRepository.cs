@@ -1,11 +1,10 @@
 ﻿using HotelRoomCodeFirstDb.Entities;
+using System.Linq;
 
 namespace HotelRoomBookingDAL.IRepository
 {
     public interface IBookingRepository : IBaseEntityRepository<Booking, Booking>
     {
-        //IQueryable<Booking> GetBooking();
-
-        //Booking CreateUpdateBooking(Booking booking);
+        // Trying this one with generics
     }
 }

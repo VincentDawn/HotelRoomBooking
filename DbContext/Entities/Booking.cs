@@ -12,6 +12,10 @@ namespace HotelRoomCodeFirstDb.Entities
 
         public DateTime? DateModified { get; set; }
 
+        public DateTime DateStart { get; set; }
+
+        public DateTime DateEnd { get; set; } // Will presume there's always an end date supplied
+
         [Required]
         [MaxLength(36)]
         public Guid BookingReference { get; set; } // spec says "BookingNumber" but I want to use a GUID and I don't want to append "Number"
