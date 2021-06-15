@@ -1,6 +1,7 @@
 ﻿using HotelRoomBookingDAL.IRepository;
 using HotelRoomCodeFirstDb;
 using HotelRoomCodeFirstDb.Entities;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace HotelRoomBookingDAL.Repository
@@ -33,7 +34,7 @@ namespace HotelRoomBookingDAL.Repository
 
         public IQueryable<Booking> Get()
         {
-            return _dbContext.Booking;
+            return _dbContext.Booking.Include(x => x.Room).ThenInclude(x => x.Hotel); // Include the room and hotel in this so we can see the room number and hotel name
         }
     }
 }

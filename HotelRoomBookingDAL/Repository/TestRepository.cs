@@ -2,6 +2,7 @@
 using HotelRoomCodeFirstDb;
 using HotelRoomCodeFirstDb.Entities;
 using HotelRoomCodeFirstDb.EnumEntities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 
@@ -18,6 +19,7 @@ namespace HotelRoomBookingDAL.Repository
 
         public bool SetUp()
         {
+            _dbContext.Database.Migrate();
             // Add 2 company
             // Add 3 hotels
             // "Hotels have 6 rooms" Will have 2 hotels with at least 6
@@ -83,6 +85,7 @@ namespace HotelRoomBookingDAL.Repository
             };
 
             _dbContext.AddRange(companies);
+            _dbContext.SaveChanges();
 
             _dbContext.AddRange(bookings);
 
@@ -91,9 +94,7 @@ namespace HotelRoomBookingDAL.Repository
 
         public bool TearDown()
         {
-            // Delete companies and it'll all cascade?
-            _dbContext.RemoveRange(_dbContext.Company);
-            return _dbContext.SaveChanges() > 1;
+            return _dbContext.Database.EnsureDeleted();
         }
     }
 }
