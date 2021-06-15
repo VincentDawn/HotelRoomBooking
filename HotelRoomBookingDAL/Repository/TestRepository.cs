@@ -2,6 +2,7 @@
 using HotelRoomCodeFirstDb;
 using HotelRoomCodeFirstDb.Entities;
 using HotelRoomCodeFirstDb.EnumEntities;
+using System;
 using System.Collections.Generic;
 
 namespace HotelRoomBookingDAL.Repository
@@ -66,8 +67,26 @@ namespace HotelRoomBookingDAL.Repository
                 } }
             };
 
+            // Some assortment of bookings?
+            // 18 rooms so just going to harccode the roomIds
+            List<Booking> bookings = new List<Booking>()
+            {
+                new Booking(){ BookingReference = Guid.NewGuid(), DateCreated = DateTime.UtcNow, DateEnd = DateTime.UtcNow.AddDays(18), DateStart = DateTime.UtcNow.AddDays(9), RoomId = 1 },
+                new Booking(){ BookingReference = Guid.NewGuid(), DateCreated = DateTime.UtcNow, DateEnd = DateTime.UtcNow.AddDays(8), DateStart = DateTime.UtcNow.AddDays(1), RoomId = 1 },
+                new Booking(){ BookingReference = Guid.NewGuid(), DateCreated = DateTime.UtcNow, DateEnd = DateTime.UtcNow.AddDays(16), DateStart = DateTime.UtcNow.AddDays(8), RoomId = 3 },
+                new Booking(){ BookingReference = Guid.NewGuid(), DateCreated = DateTime.UtcNow, DateEnd = DateTime.UtcNow.AddDays(24), DateStart = DateTime.UtcNow.AddDays(17), RoomId = 3 },
+                new Booking(){ BookingReference = Guid.NewGuid(), DateCreated = DateTime.UtcNow, DateEnd = DateTime.UtcNow.AddDays(14), DateStart = DateTime.UtcNow.AddDays(7), RoomId = 5 },
+                new Booking(){ BookingReference = Guid.NewGuid(), DateCreated = DateTime.UtcNow, DateEnd = DateTime.UtcNow.AddDays(12), DateStart = DateTime.UtcNow.AddDays(6), RoomId = 7 },
+                new Booking(){ BookingReference = Guid.NewGuid(), DateCreated = DateTime.UtcNow, DateEnd = DateTime.UtcNow.AddDays(10), DateStart = DateTime.UtcNow.AddDays(5), RoomId = 9 },
+                new Booking(){ BookingReference = Guid.NewGuid(), DateCreated = DateTime.UtcNow, DateEnd = DateTime.UtcNow.AddDays(8), DateStart = DateTime.UtcNow.AddDays(4), RoomId = 11 },
+                new Booking(){ BookingReference = Guid.NewGuid(), DateCreated = DateTime.UtcNow, DateEnd = DateTime.UtcNow.AddDays(6), DateStart = DateTime.UtcNow.AddDays(3), RoomId = 13 },
+                new Booking(){ BookingReference = Guid.NewGuid(), DateCreated = DateTime.UtcNow, DateEnd = DateTime.UtcNow.AddDays(-4), DateStart = DateTime.UtcNow.AddDays(-8), RoomId = 15 },
+                new Booking(){ BookingReference = Guid.NewGuid(), DateCreated = DateTime.UtcNow, DateEnd = DateTime.UtcNow.AddDays(-2), DateStart = DateTime.UtcNow.AddDays(-10), RoomId = 17 }
+            };
 
             _dbContext.Company.AddRange(companies);
+            _dbContext.Booking.AddRange(bookings);
+
             return _dbContext.SaveChanges() > 1;
         }
 
