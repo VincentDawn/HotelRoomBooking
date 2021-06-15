@@ -8,6 +8,7 @@ namespace HotelRoomBooking.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //[Authorize] Would put the attribute here, or on individual action methods if it wasn't on controller
     public class BookingController : ControllerBase
     {
         private readonly IBookingHelper _bookingHelper;

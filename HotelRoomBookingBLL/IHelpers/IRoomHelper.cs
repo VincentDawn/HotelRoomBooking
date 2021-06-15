@@ -7,5 +7,6 @@ namespace HotelRoomBookingBLL.IHelpers
     public interface IRoomHelper
     {
         List<RoomDTO> AvailableRooms(DateTime dateStart, DateTime dateEnd, int guestCount); // Random non-queryable version
+        List<RoomDTO> Get();
     }
 }

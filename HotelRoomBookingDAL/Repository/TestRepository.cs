@@ -67,8 +67,6 @@ namespace HotelRoomBookingDAL.Repository
                 } }
             };
 
-            // Some assortment of bookings?
-            // 18 rooms so just going to harccode the roomIds
             List<Booking> bookings = new List<Booking>()
             {
                 new Booking(){ BookingReference = Guid.NewGuid(), DateCreated = DateTime.UtcNow, DateEnd = DateTime.UtcNow.AddDays(18), DateStart = DateTime.UtcNow.AddDays(9), RoomId = 1 },
@@ -84,8 +82,9 @@ namespace HotelRoomBookingDAL.Repository
                 new Booking(){ BookingReference = Guid.NewGuid(), DateCreated = DateTime.UtcNow, DateEnd = DateTime.UtcNow.AddDays(-2), DateStart = DateTime.UtcNow.AddDays(-10), RoomId = 17 }
             };
 
-            _dbContext.Company.AddRange(companies);
-            _dbContext.Booking.AddRange(bookings);
+            _dbContext.AddRange(companies);
+
+            _dbContext.AddRange(bookings);
 
             return _dbContext.SaveChanges() > 1;
         }
@@ -93,7 +92,7 @@ namespace HotelRoomBookingDAL.Repository
         public bool TearDown()
         {
             // Delete companies and it'll all cascade?
-            _dbContext.Company.RemoveRange(_dbContext.Company);
+            _dbContext.RemoveRange(_dbContext.Company);
             return _dbContext.SaveChanges() > 1;
         }
     }

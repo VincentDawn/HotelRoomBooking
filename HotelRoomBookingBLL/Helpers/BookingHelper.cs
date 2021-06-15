@@ -61,6 +61,11 @@ namespace HotelRoomBookingBLL.Helpers
                 .Any(x => !(x.DateStart < dateEnd && dateStart < x.DateEnd));
         }
 
+        public List<BookingDTO> Get()
+        {
+            return _mapper.Map<List<BookingDTO>>(_bookingRepository.Get());
+        }
+
         public BookingDTO GetBookingByReferenceNumber(Guid referenceNumber)
         {
             return _mapper.Map<BookingDTO>(_bookingRepository.Get().FirstOrDefault(x => x.BookingReference == referenceNumber));
@@ -72,6 +77,16 @@ namespace HotelRoomBookingBLL.Helpers
                 .FirstOrDefault(x => x.Name == name);
 
             return _mapper.Map<HotelDTO>(hotel);
+        }
+
+        List<HotelDTO> IHotelHelper.Get()
+        {
+            return _mapper.Map<List<HotelDTO>>(_hotelRepository.GetHotels());
+        }
+
+        List<RoomDTO> IRoomHelper.Get()
+        {
+            return _mapper.Map<List<RoomDTO>>(_roomRepository.GetRooms());
         }
     }
 }
