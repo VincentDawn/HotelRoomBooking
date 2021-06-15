@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace HotelRoomBookingDAL.IRepository
 {
-    public interface IRoomRepository : IBaseEntityRepository<Room, Room>
+    public interface IRoomRepository
     {
         IQueryable<Room> GetRooms();
     }

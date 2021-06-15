@@ -30,7 +30,15 @@ namespace HotelRoomBooking
             });
 
             // Register all the services
+            services.AddScoped<IBookingHelper, BookingHelper>();
+            services.AddScoped<IHotelHelper, BookingHelper>();
+            services.AddScoped<IRoomHelper, BookingHelper>();
             services.AddScoped<ITestHelper, TestHelper>();
+
+
+            services.AddScoped<IBookingRepository, BookingRepository>();
+            services.AddScoped<IHotelRepository, HotelRepository>();
+            services.AddScoped<IRoomRepository, RoomRepository>();
             services.AddScoped<ITestRepository, TestRepository>();
 
             // Automapper

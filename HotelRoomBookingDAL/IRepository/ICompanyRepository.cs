@@ -1,8 +1,7 @@
-﻿using HotelRoomCodeFirstDb.Entities;
-
-namespace HotelRoomBookingDAL.IRepository
+﻿namespace HotelRoomBookingDAL.IRepository
 {
-    public interface ICompanyRepository : IBaseEntityRepository<Company, Company>
+    public interface ICompanyRepository
     {
+        // Don't need company
     }
 }
