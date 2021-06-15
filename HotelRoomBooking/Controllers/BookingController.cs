@@ -23,7 +23,7 @@ namespace HotelRoomBooking.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
+        [HttpGet("GetHotelByName/{name}")] // In URL and not querystring example
         public ActionResult<HotelDTO> GetHotelByName(string name)
         {
             try
@@ -38,7 +38,7 @@ namespace HotelRoomBooking.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpGet("FindRooms")]
         public ActionResult<RoomDTO> FindRooms(DateTime dateStart, DateTime dateEnd, int guestCount)
         {
             try
@@ -53,7 +53,7 @@ namespace HotelRoomBooking.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpGet("GetBookingDetails")]
         public ActionResult<BookingDTO> GetBookingDetails(Guid guid)
         {
             try
@@ -69,7 +69,7 @@ namespace HotelRoomBooking.Controllers
         }
 
         // I could make request object for this and add it to the parms for modelbinding but wont due to time constraints
-        [HttpPost]
+        [HttpPost("BookRoom")]
         public ActionResult<BookingDTO> BookRoom(int RoomId, DateTime dateStart, DateTime dateEnd, int guestCount)
         {
             try

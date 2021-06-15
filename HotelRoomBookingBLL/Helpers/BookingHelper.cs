@@ -3,6 +3,7 @@ using HotelRoomBookingBLL.DTO;
 using HotelRoomBookingBLL.IHelpers;
 using HotelRoomBookingDAL.IRepository;
 using HotelRoomCodeFirstDb.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,8 @@ namespace HotelRoomBookingBLL.Helpers
 
         public List<RoomDTO> AvailableRooms(DateTime dateStart, DateTime dateEnd, int guestCount)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<List<RoomDTO>>(_roomRepository.GetRooms().Include(x => x.Bookings)
+                .Where(x => x.Bookings.Where(y => y.DateStart < dateEnd && dateStart < y.DateEnd).Count() == 0 && x.BedCount >= guestCount));
         }
 
         public BookingDTO BookRoom(int roomId, DateTime dateStart, DateTime dateEnd, int guestCount)
@@ -52,8 +54,11 @@ namespace HotelRoomBookingBLL.Helpers
         public bool CanBookRoom(int roomId, DateTime dateStart, DateTime dateEnd, int guestCount)
         {
             // Any overlap?
-            return !_bookingRepository.Get()
-                .Any(x => x.RoomId == roomId && x.DateStart < dateEnd && dateStart < x.DateEnd);
+            return _bookingRepository.Get()
+                .Include(x => x.Room)
+                .Where(x => x.RoomId == roomId && x.Room.BedCount >= guestCount)
+                // We have bookings for this room, are there any which overlap
+                .Any(x => !(x.DateStart < dateEnd && dateStart < x.DateEnd));
         }
 
         public BookingDTO GetBookingByReferenceNumber(Guid referenceNumber)
@@ -63,7 +68,10 @@ namespace HotelRoomBookingBLL.Helpers
 
         public HotelDTO GetHotelByName(string name)
         {
-            return _mapper.Map<HotelDTO>(_hotelRepository.GetHotels().FirstOrDefault(x => Convert.ToBoolean(String.Compare(x.Name, name, true))));
+            var hotel = _hotelRepository.GetHotels()
+                .FirstOrDefault(x => x.Name == name);
+
+            return _mapper.Map<HotelDTO>(hotel);
         }
     }
 }
