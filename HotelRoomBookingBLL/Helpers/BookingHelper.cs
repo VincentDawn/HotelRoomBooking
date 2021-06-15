@@ -34,7 +34,7 @@ namespace HotelRoomBookingBLL.Helpers
 
         public BookingDTO BookRoom(int roomId, DateTime dateStart, DateTime dateEnd, int guestCount)
         {
-            if(CanBookRoom(roomId, dateStart, dateEnd, guestCount))
+            if (CanBookRoom(roomId, dateStart, dateEnd, guestCount))
             {
                 var booking = new Booking()
                 {

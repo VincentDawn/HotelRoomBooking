@@ -1,5 +1,4 @@
 ﻿using HotelRoomCodeFirstDb.Entities;
-using System.Linq;
 
 namespace HotelRoomBookingDAL.IRepository
 {

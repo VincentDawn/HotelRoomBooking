@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace HotelRoomBookingBLL.DTO
+﻿namespace HotelRoomBookingBLL.DTO
 {
     public class CompanyDTO
     {

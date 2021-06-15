@@ -1,7 +1,6 @@
 ﻿using HotelRoomBookingBLL.DTO;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace HotelRoomBookingBLL.IHelpers
 {
