@@ -27,7 +27,7 @@ namespace HotelRoomBooking
         {
             services.AddDbContext<HotelBookingDbContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("LocalDB"), x => x.MigrationsAssembly("HotelRoomBooking"));
+                options.UseSqlServer(Configuration.GetConnectionString("HotelDB"), x => x.MigrationsAssembly("HotelRoomBooking"));
             });
 
             // Register all the services
